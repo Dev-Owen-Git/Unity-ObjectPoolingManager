@@ -90,7 +90,7 @@ public class ObjectPoolingManager : MonoBehaviour
 #endregion
 
 #region  Get
-    public GameObject GetObject( string _id, bool _enable = true )
+    public GameObject GetObject( string _id, Transform _parent = null, bool _enable = true )
     {
         if ( poolParentDic.ContainsKey( _id ) == false )
         {
@@ -101,7 +101,15 @@ public class ObjectPoolingManager : MonoBehaviour
         Transform pool = poolParentDic[_id].GetChild(0);
         if ( pool.gameObject.activeSelf == false )
         {
-            pool.SetParent( poolParentDic["Using"] );
+            if ( _parent == null )
+            {
+                pool.SetParent( poolParentDic["Using"] );
+            }
+            else
+            {
+                pool.SetParent( _parent );
+            }
+
             pool.gameObject.SetActive( _enable );
             return pool.gameObject;
         }
@@ -110,38 +118,43 @@ public class ObjectPoolingManager : MonoBehaviour
         return InstantiatePool( instantiateObject[ _id ].prefab, poolParentDic[ _id ],  instantiateObject[ _id ].poolCount );;
     }
 
-    public GameObject GetObject( string _id, Vector3 _position, Quaternion _rotation, bool _enable = true )
+    // Set Position, Rotation
+    public GameObject GetObject( string _id, Vector3 _position, Quaternion _rotation, Transform _parent = null, bool _enable = true )
     {
-        GameObject rtnObject  = GetObject( _id, false );
+        GameObject rtnObject  = GetObject( _id, _parent, false );
         rtnObject.transform.SetPositionAndRotation( _position, _rotation );
         rtnObject.gameObject.SetActive( _enable );
         return rtnObject;
     }
 
-    public GameObject GetObject( string _id, Vector3 _position, Quaternion _rotation, float _rtnTime, bool _enable = true )
+    // Set Position, Rotation And WaitReturn
+    public GameObject GetObject( string _id, Vector3 _position, Quaternion _rotation, float _rtnTime, Transform _parent = null, bool _enable = true )
     {
-        GameObject rtnObject = GetObject(_id, _position, _rotation, _enable );
+        GameObject rtnObject = GetObject(_id, _position, _rotation, _parent, _enable );
         StartCoroutine(  WaitReturnObject( rtnObject, _rtnTime ));
         return rtnObject;
     }  
 
-    public GameObject GetObject( string _id, float _rtnTime, bool _enable = true )
+    // WaitReturn
+    public GameObject GetObject( string _id, float _rtnTime, Transform _parent = null, bool _enable = true )
     {
-        GameObject rtnObject  = GetObject( _id, _enable );
+        GameObject rtnObject  = GetObject( _id, _parent, _enable );
         StartCoroutine(  WaitReturnObject( rtnObject, _rtnTime ));
         return rtnObject;
     }
 
-    public GameObject GetObjectToAutoReturn( string _id, Vector3 _position, Quaternion _rotation, bool _enable = true )
+    // Auto Return And Set Position Rotation And Parent
+    public GameObject GetObjectToAutoReturn( string _id, Vector3 _position, Quaternion _rotation, Transform _parent = null, bool _enable = true )
     {
-        GameObject rtnObject  = GetObject( _id, _position, _rotation, _enable );
+        GameObject rtnObject  = GetObject( _id, _position, _rotation, _parent, _enable );
         StartCoroutine( AutoReturn( rtnObject ) );
         return rtnObject;
     }
 
-     public GameObject GetObjectToAutoReturn( string _id, bool _enable = true )
+    // Autu Return And Set Position Rotation
+     public GameObject GetObjectToAutoReturn( string _id, Transform _parent = null, bool _enable = true )
     {
-        GameObject rtnObject  = GetObject( _id, _enable );
+        GameObject rtnObject  = GetObject( _id, _parent, _enable );
         StartCoroutine(  AutoReturn( rtnObject ));
         return rtnObject;
     }  
