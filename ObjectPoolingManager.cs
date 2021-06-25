@@ -98,20 +98,23 @@ public class ObjectPoolingManager : MonoBehaviour
             return null;
         }
 
-        Transform pool = poolParentDic[_id].GetChild(0);
-        if ( pool.gameObject.activeSelf == false )
+        if ( poolParentDic[_id].childCount > 0 )
         {
-            if ( _parent == null )
+            Transform pool = poolParentDic[_id].GetChild(0);
+            if ( pool.gameObject.activeSelf == false )
             {
-                pool.SetParent( poolParentDic["Using"] );
-            }
-            else
-            {
-                pool.SetParent( _parent );
-            }
+                if ( _parent == null )
+                {
+                    pool.SetParent( poolParentDic["Using"] );
+                }
+                else
+                {
+                    pool.SetParent( _parent );
+                }
 
-            pool.gameObject.SetActive( _enable );
-            return pool.gameObject;
+                pool.gameObject.SetActive( _enable );
+                return pool.gameObject;
+            }
         }
         
         // 부족한 경우 추가 생성 후 하나를 반환해 줍니다.
