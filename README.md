@@ -1,17 +1,21 @@
-<----- Function List ----->
+오브젝트 풀링 매니저 사용법 ( 2021-06-26 )
+------------
 
-<br> < --- Add ---> </br>
-<br> ObjectPoolingManager.instance.Pool( _poolingObjectList );</br>
+추가 방법 
+<br>ObjectPoolingManager.instance.Pool( _poolingObjectList );</br>
 
-<br> < --- Get --- > </br>
-<br> ObjectPoolingManager.instance.GetObject( _id ); </br>
-<br> ObjectPoolingManager.instance.GetObject( _id, _position, _rotation );</br>
+------------
+오브젝트 가져오기 
+<br> ObjectPoolingManager.instance.GetObject( _id );
+<br> ObjectPoolingManager.instance.GetObject( _id, _position, _rotation );
 
-<br> ObjectPoolingManager.instance.GetObject( _id, _rtnTime );</br>
-<br> ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _rtnTime );</br>
+<br> ObjectPoolingManager.instance.GetObject( _id, _rtnTime );
+<br> ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _rtnTime );
 
-<br> ObjectPoolingManager.instance.GetObjectToAutoReturn( _id );</br>
-<br> ObjectPoolingManager.instance.GetObjectToAutoReturn( _id, _position, _rotation );</br>
+<br> ObjectPoolingManager.instance.GetObjectToAutoReturn( _id );
+<br> ObjectPoolingManager.instance.GetObjectToAutoReturn( _id, _position, _rotation );
 
-<br> < --- Return --- > </br>
+
+------------
+오브젝트 반환하기 
 <br> ObjectPoolingManager.instance.ReturnObject( _object ); </br>
