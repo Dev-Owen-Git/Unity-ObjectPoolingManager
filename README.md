@@ -1,7 +1,6 @@
-# Unity-ObjectPoolingManager
 ObjectPoolingManager
 
-Function  
+Function List
 
 <br> Add </br>
 <br> ObjectPoolingManager.instance.Pool( _poolingObjectList );</br>
