@@ -77,6 +77,12 @@ public class ObjectPoolingManager : MonoBehaviour
     /// <summary> 오브젝트를 갯수 만큼 생성하고 마지막 생성된 오브젝트를 반환합니다 </summary>
     GameObject InstantiatePool( GameObject _prefab, Transform _parent, int _count )
     {
+        if ( _count <= 0 )
+        {
+            Debug.LogWarning( $"{_prefab.name} is pooling Count 0" );
+            return;
+        }
+
         GameObject inst = null;
         for ( int i = 0; i < _count; i++ )
         {
