@@ -17,7 +17,6 @@ public class ObjectPoolingManager : MonoBehaviour
 {
     public static ObjectPoolingManager instance;
     [ SerializeField ] private List<PoolObjectData> poolList = new List<PoolObjectData>();
-    
 
     private Dictionary<string, Transform> poolParentDic = new Dictionary<string, Transform>();
     private Dictionary<string, PoolObjectData> instantiateObject = new Dictionary<string, PoolObjectData>();
