@@ -6,26 +6,13 @@
 
 ------------
 오브젝트 가져오기 
-<br>ObjectPoolingManager.instance.GetObject( _id );
-<br>ObjectPoolingManager.instance.GetObject( _id, _position, _rotation );
-<br>ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _parent );
-<br>ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _parent, _enable );
+<br>ObjectPoolingManager.instance.GetObject( ... ) </br>
 
-<br>ObjectPoolingManager.instance.GetObject( _id, _rtnTime );
-<br>ObjectPoolingManager.instance.GetObject( _id, _rtnTime, _parent );
-<br>ObjectPoolingManager.instance.GetObject( _id, _rtnTime, _parent, _enable );
-
-<br>ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _rtnTime );
-<br>ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _rtnTime, _parent );
-<br>ObjectPoolingManager.instance.GetObject( _id, _position, _rotation, _rtnTime, _parent, _enable );
-
-<br>ObjectPoolingManager.instance.GetObjectToAutoReturn( _id );
-<br>ObjectPoolingManager.instance.GetObjectToAutoReturn( _id, _enable );
-
-<br>ObjectPoolingManager.instance.GetObjectToAutoReturn( _id, _position, _rotation );
-<br>ObjectPoolingManager.instance.GetObjectToAutoReturn( _id, _position, _rotation, _parent );
-<br>ObjectPoolingManager.instance.GetObjectToAutoReturn( _id, _position, _rotation, _parent, _enable );
-
+<br> 포지션 로테이션 스케일 설정가능 </br>
+<br> 오브젝트 비활성화 시 사종 반환 기능 </br>
+<br> 일정 시간 뒤 자동으로 반환되는 기능 </br>
+<br> 부족한 경우 추가 생성 </br>
+<br> 특정 컨퍼넌트 반환 </br>
 
 ------------
 오브젝트 반환하기 
